@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Q1 Project - SKU Generator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("BG.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #0d3b66;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: #ffc107;
+        }
+
+        .form {
+            background-color: #ffc107;
+            width: 300px;
+            margin: 40px auto;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .form-image {
+            width: 200px;
+            height: auto;
+            margin: 10px auto 20px;
+            display: block;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #222;
+            text-align: left;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0d3b66;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #092846;
+        }
+
+        .result {
+            background-color: white;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 4px;
+            color: #28a745;
+            font-weight: bold;
+            display: none;
+        }
+
+        .success-logo {
+            width: 50px;
+            height: 50px;
+            margin-top: 10px;
+        }
+
+        .success {
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="index.html">SKU Generator</a>
+        <a href="receipt.html">Receipt Generator</a>
+    </div>
+
+    <div class="form">
+
+        <h2>SKU Generator</h2>
+
+        <img src="sample.jpg" alt="SKU Image" class="form-image">
+
+        <label>Category:</label>
+        <select id="category">
+            <option>Electronics</option>
+            <option>Apparel</option>
+            <option>Home</option>
+        </select>
+
+        <label>Product Name:</label>
+        <input type="text" id="productName" placeholder="e.g. Shirt">
+
+        <label>Stock Quantity:</label>
+        <input type="number" id="stockQty" placeholder="e.g. 100">
+
+        <button onclick="generateSKU()">Generate SKU</button>
+
+        <div class="result" id="result">
+
+            <h3 id="skuText"></h3>
+
+            <div id="successMessage" style="display: none;">
+                <img src="check.jpg" alt="Success Logo" class="success-logo">
+                <p class="success">Success!</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function generateSKU() {
+            let category = document.getElementById("category").value;
+            let productName = document.getElementById("productName").value;
+            let stockQty = document.getElementById("stockQty").value;
+
+            let sku = category + "-" + productName + "-" + stockQty;
+
+            document.getElementById("skuText").textContent = "SKU: " + sku;
+
+            document.getElementById("result").style.display = "block";
+
+            document.getElementById("successMessage").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
